@@ -1,0 +1,55 @@
+.App {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App-image {
+  float: left;
+  padding: 15px 15px 15px 15px;
+}
+
+.App-title-text {
+  margin: 0 4vw 0 0;
+  min-height: 100vh;
+  text-align: center;
+  font-size: calc(25px + 1vmax);
+  color: white;
+}
+
+.App-header {
+  padding: 15px 0 0 0;
+  min-height: 100vh;
+  text-align: center;
+  font-size: calc(25px + 1vmax);
+  color: white;
+}
+
+.App-input {
+  text-align: left;
+  margin: 0 0 0 0;
+  border: none;
+  outline: none;
+  background: #181818;
+  font-family: Arial, serif;
+  font-size: calc(6px + 1vmax);
+  width: 97vw;
+  height: 80vh;
+  color: black !important;
+}
+
+h1, h2{
+  text-align: center;
+  font-size: calc(4px + 1vmax);
+}
+
+textarea {
+  resize: none;
+}
+
+#space {
+  /*padding: 0 20% 0 22%;*/
+}
+
+/* makes GitHub logo work */
+.Filter {
+  fill: white;
+}
