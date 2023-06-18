@@ -62,7 +62,7 @@ class Worker extends React.Component {
             <span>
                 <h1>Word Count: {wordNum}</h1>
                 <h1>Character Count: {charNum}</h1>
-                <textarea spellCheck={false} className="App-input" value={this.state.original} onChange={this.handleChange} />
+                <textarea spellCheck={true} className="App-input" value={this.state.original} onChange={this.handleChange} />
             </span>
         );
     }
