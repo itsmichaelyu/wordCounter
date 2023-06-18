@@ -46,7 +46,6 @@ class Worker extends React.Component {
         this.setState({original: event.target.value});
         this.countWords(event.target.value);
         this.countChars(event.target.value);
-        // document.body.style.backgroundColor = "black";
     }
 
     countWords(data) {
