@@ -1,38 +1,55 @@
 .App {
-  text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-image {
+  float: left;
+  padding: 15px 15px 15px 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.App-title-text {
+  margin: 0 4vw 0 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+  font-size: calc(25px + 1vmax);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header {
+  padding: 15px 0 0 0;
+  min-height: 100vh;
+  text-align: center;
+  font-size: calc(25px + 1vmax);
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-input {
+  text-align: left;
+  margin: 0 0 0 0;
+  border: none;
+  outline: none;
+  background: #181818;
+  font-family: Arial, serif;
+  font-size: calc(6px + 1vmax);
+  width: 97vw;
+  height: 80vh;
+  color: black !important;
+}
+
+h1, h2{
+  text-align: center;
+  font-size: calc(4px + 1vmax);
+}
+
+textarea {
+  resize: none;
+}
+
+#space {
+  /*padding: 0 20% 0 22%;*/
+}
+
+/* makes GitHub logo work */
+.Filter {
+  fill: white;
 }
