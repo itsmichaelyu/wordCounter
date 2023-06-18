@@ -28,12 +28,12 @@
   margin: 0 0 0 0;
   border: none;
   outline: none;
-  background: #181818;
+  background: #141414;
   font-family: Arial, serif;
   font-size: calc(6px + 1vmax);
   width: 97vw;
   height: 80vh;
-  color: black !important;
+  color: white !important;
 }
 
 h1, h2{
