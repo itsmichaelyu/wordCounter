@@ -58,4 +58,16 @@ class Worker extends React.Component {
     }
 }
 
+window.onbeforeunload = function (e) {
+    e = e || window.event;
+
+    // For IE and Firefox prior to version 4
+    if (e) {
+        e.returnValue = 'Did you save your work?';
+    }
+
+    // For Safari
+    return 'Did you save your work?';
+};
+
 export default App;
