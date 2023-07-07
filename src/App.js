@@ -25,20 +25,10 @@ class Worker extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            original: '',
-            modified: '',
-            disabled: 1,
-            reg: '',
-            labels: [],
-            data: [],
-            datasets: [{
-                data: [],
-                // 13 colors
-                backgroundColor: ['red', 'green', 'blue', 'purple', 'yellow', 'pink', 'orange', 'violet', 'brown', 'gray', 'white', 'black', 'cyan'],
-                fontColor: ['white'],
-                borderWidth: 0,
-            }]
+            original: sessionStorage.getItem("data") ?? '',
         };
+        this.countWords(this.state.original);
+        this.countChars(this.state.original);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -46,7 +36,7 @@ class Worker extends React.Component {
         this.setState({original: event.target.value});
         this.countWords(event.target.value);
         this.countChars(event.target.value);
-        // document.body.style.backgroundColor = "black";
+        sessionStorage.setItem("data", event.target.value);
     }
 
     countWords(data) {
