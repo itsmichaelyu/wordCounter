@@ -44,7 +44,7 @@ class Worker extends React.Component {
     }
 
     countChars(data) {
-        charNum = data.split(/[\n\r]+/).join('').length;
+        charNum = data.length;
     }
 
     render() {
