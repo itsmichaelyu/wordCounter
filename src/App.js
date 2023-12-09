@@ -20,6 +20,7 @@ function App() {
 
 let wordNum = 0;
 let charNum = 0;
+let lock = false;
 
 class Worker extends React.Component {
     constructor(props) {
@@ -27,24 +28,53 @@ class Worker extends React.Component {
         this.state = {
             original: sessionStorage.getItem("data") ?? '',
         };
-        this.countWords(this.state.original);
-        this.countChars(this.state.original);
+        this.countWords(this.state.original, 0);
+        this.countChars(this.state.original, 0);
         this.handleChange = this.handleChange.bind(this);
     }
 
     async handleChange(event) {
         this.setState({original: event.target.value});
-        this.countWords(event.target.value);
-        this.countChars(event.target.value);
+        this.countWords(event.target.value, 0);
+        this.countChars(event.target.value, 0);
         sessionStorage.setItem("data", event.target.value);
     }
 
-    countWords(data) {
-        wordNum = data.split(/[\s]+/).filter(function (el) {return el !== '';}).length;
+    async handleSelectionChange(event) {
+        // const start = event.target.selectionStart;
+        // const end = event.target.selectionEnd;
+        console.log(event.target.selectionEnd - event.target.selectionStart)
+        this.setState({original: event.target.value});
+        this.countWords(event.target.selectionEnd - event.target.selectionStart > 0 ? event.target.value.substring(event.target.selectionStart, event.target.selectionEnd) : event.target.value, event.target.selectionEnd - event.target.selectionStart > 0 ? 1 : -1);
+        this.countChars(event.target.selectionEnd - event.target.selectionStart > 0 ? event.target.value.substring(event.target.selectionStart, event.target.selectionEnd) : event.target.value, event.target.selectionEnd - event.target.selectionStart > 0 ? 1 : -1);
     }
 
-    countChars(data) {
-        charNum = data.length;
+    countWords(data, priority) {
+        if (priority === 1) {
+            wordNum = data.split(/[\s]+/).filter(function (el) {return el !== '';}).length;
+            lock = true;
+        }
+        else if (priority === -1) {
+            wordNum = data.split(/[\s]+/).filter(function (el) {return el !== '';}).length;
+            lock = false;
+        }
+        else if (priority === 0 && !lock) {
+            wordNum = data.split(/[\s]+/).filter(function (el) {return el !== '';}).length;
+        }
+    }
+
+    countChars(data, priority) {
+        if (priority === 1) {
+            charNum = data.length;
+            // lock = true;
+        }
+        else if (priority === -1) {
+            charNum = data.length;
+            // lock = false;
+        }
+        else if (priority === 0 && !lock) {
+            charNum = data.length;
+        }
     }
 
     render() {
@@ -52,15 +82,13 @@ class Worker extends React.Component {
             <span>
                 <h1>Word Count: {wordNum}</h1>
                 <h1>Character Count: {charNum}</h1>
-                <textarea spellCheck={true} className="App-input" value={this.state.original} onChange={this.handleChange} />
+                <textarea spellCheck={true} className="App-input" value={this.state.original} onChange={this.handleChange} onClick={this.handleSelectionChange.bind(this)} />
             </span>
         );
     }
 }
 
 window.onbeforeunload = function (e) {
-    e = e || window.event;
-
     // For IE and Firefox prior to version 4
     if (e) {
         e.returnValue = 'Did you save your work?';
